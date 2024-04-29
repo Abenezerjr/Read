@@ -5,9 +5,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/navbar.css'  %} "/>
   </head>
   <body>
@@ -23,8 +20,12 @@
 {#            <a class="main-nav-link" href="#testimonials">Testimonials</a>#}
 {#          </li>#}
 {#          <li><a class="main-nav-link" href="#price">Pricing</a></li>#}
-          <li><a class="main-nav-link nav-cat" href="{% url 'register' %}">Register</a></li>
+         {% if request.user.is_authenticated %}
+             <li><a class="main-nav-link" href="{% url 'logout' %}">Logout</a></li>
+         {% else %}
+              <li><a class="main-nav-link nav-cat" href="{% url 'register' %}">Register</a></li>
              <li><a class="main-nav-link" href="{% url 'login' %}">Login</a></li>
+            {% endif %}
         </ul>
       </nav>
       <button aria-label="Open Menu" class="btn-mobile-nav">

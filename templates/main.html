@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,13 +7,13 @@
     <meta name="keywords" content="HTML, CSS, JavaScript">
     <meta name="author" content="Abenezer Alemayehu">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
     {% block css %}
 
     {% endblock %}
 
 
-    <title>Title</title>
+    <title>BuyBook's</title>
 </head>
 <body>
 {% include 'navbar.html' %}
