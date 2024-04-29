@@ -7,12 +7,17 @@
     <meta name="author" content="Abenezer Alemayehu">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    {% block css %}
+
+    {% endblock %}
+
 
     <title>Title</title>
 </head>
 <body>
+{% include 'navbar.html' %}
+{% block content %}
 
-<h1>Login</h1>
-
+{% endblock %}
 </body>
 </html>
