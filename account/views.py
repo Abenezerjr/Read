@@ -41,10 +41,10 @@ def UserLogin(request):
 
             if user is not None and user.is_writer == True:
                 login(request, user)
-                return redirect('')
+                return redirect('writer-dashbored')
             if user is not None and user.is_writer == False:
                 login(request, user)
-                return redirect('')
+                return redirect('client-dashboard')
     context = {
         'loginForm': form
     }
@@ -54,4 +54,4 @@ def UserLogin(request):
 
 def UserLogout(request):
     logout(request)
-    return redirect('')
+    return redirect('login')

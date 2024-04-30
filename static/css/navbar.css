@@ -13,7 +13,8 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #000000;
+  background: rgb(32,32,36);
+background: linear-gradient(90deg, rgba(32,32,36,1) 0%, rgba(59,59,63,1) 35%, rgba(50,47,47,1) 100%);
   /* we went to bi sticky  later*/
   height: 9.6rem;
   padding: 0 4.8rem;

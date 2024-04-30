@@ -8,4 +8,6 @@ root{
 html{
     font-style: var(--font-base);
     font-family: var(--font-base);
+      background: rgb(32,32,36);
+background: linear-gradient(90deg, rgb(253, 253, 253) 0%, rgb(255, 255, 255) 35%, rgb(239, 239, 239) 100%);
 }

@@ -21,7 +21,18 @@
 {#          </li>#}
 {#          <li><a class="main-nav-link" href="#price">Pricing</a></li>#}
          {% if request.user.is_authenticated %}
-             <li><a class="main-nav-link" href="{% url 'logout' %}">Logout</a></li>
+
+
+             {% if request.user.is_authenticated and request.user.is_writer %}
+                 <li><a class="main-nav-link" href="{% url 'writer-dashbored' %}">Dashbored</a></li>
+             <li><a class="main-nav-link" href="{% url 'logout' %}">Create article</a></li>
+             <li><a class="main-nav-link" href="{% url 'logout' %}">my article</a></li>
+                 {% else %}
+                     <li><a class="main-nav-link" href="{% url 'client-dashboard' %}">Dashbored</a></li>
+                  <li><a class="main-nav-link" href="{% url 'logout' %}">read article</a></li>
+                          <li><a class="main-nav-link" href="{% url 'logout' %}">account management</a></li>
+                  <li><a class="main-nav-link" href="{% url 'logout' %}">Logout</a></li>
+                 {% endif %}
          {% else %}
               <li><a class="main-nav-link nav-cat" href="{% url 'register' %}">Register</a></li>
              <li><a class="main-nav-link" href="{% url 'login' %}">Login</a></li>
