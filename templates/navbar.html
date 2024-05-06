@@ -26,7 +26,7 @@
              {% if request.user.is_authenticated and request.user.is_writer %}
                  <li><a class="main-nav-link" href="{% url 'writer-dashbored' %}">Dashbored</a></li>
              <li><a class="main-nav-link" href="{% url 'create-article' %}">Create article</a></li>
-             <li><a class="main-nav-link" href="{% url 'writer-dashbored' %}">my article</a></li>
+             <li><a class="main-nav-link" href="{% url 'my_articles' %}">my article</a></li>
                   <li><a class="main-nav-link" href="{% url 'client-dashboard' %}">account management</a></li>
                  <li><a class="main-nav-link" href="{% url 'logout' %}">Logout</a></li>
                  {% else %}

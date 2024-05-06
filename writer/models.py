@@ -14,3 +14,5 @@ class Article(models.Model):
     user = models.ForeignKey(CustomUser, max_length=50, on_delete=models.CASCADE, null=True)
 
     # on_delete=models.CASCADE if the user deletes their account and deletes this article from the database
+    def __str__(self):
+        return self.title

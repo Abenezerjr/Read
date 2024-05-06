@@ -29,6 +29,21 @@
 .container_form span {
   font-size: 12px;
 }
+.links{
+  background-color: #512da8;
+  color: #fff;
+  font-size: 12px;
+  padding: 10px 45px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  cursor: pointer;
+  text-decoration: none;
+
+}
 
 .container_form a {
   color: #333;
@@ -37,7 +52,7 @@
   margin: 15px 0 10px;
 }
 
-.container_form button {
+button {
   background-color: #512da8;
   color: #fff;
   font-size: 12px;
@@ -51,7 +66,7 @@
   cursor: pointer;
 }
 
-.container_form button.hidden {
+ button.hidden {
   background-color: transparent;
   border-color: #fff;
 }
@@ -66,7 +81,7 @@
   height: 100%;
 }
 
-.container_form input {
+.container_form input  {
   background-color: #eee;
   border: none;
   margin: 8px 0;
@@ -77,6 +92,19 @@
   outline: none;
 }
 
+
+.container_form1 input ,textarea{
+
+  background-color: #eee;
+  border: none;
+  margin: 8px 0;
+  padding: 10px 15px;
+  font-size: 13px;
+  border-radius: 8px;
+  outline: none;
+    width: 100%;
+
+                  }
 .social-icons {
   margin: 20px 0;
 }
@@ -99,6 +127,7 @@
  color: black;
   margin-left: -200px;
 }
+
 
 
 @media screen and (max-width: 800px) {

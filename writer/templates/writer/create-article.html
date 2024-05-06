@@ -1,14 +1,22 @@
 {% extends 'main.html' %}
+{% load static %}
+{% block css %}
+<link href="{% static 'css/form.css'  %}" rel="stylesheet">
+{% endblock %}
+
 
 {% block content %}
+    <section class="section_form">
+    <div class="container_form1">
 
-<h2>Creat article here </h2>
+
 <form method="POST" action="#">
   {% csrf_token %}
+    <h2>Create article here</h2>
     {{ form }}
-
-
 
   <button type="submit">create</button>
 </form>
+            </div>
+     </section>
 {% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block css %}
+<link href="{% static 'css/form.css'  %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+
+<h1>My article list </h1>
+    {% for article in articles %}
+        <section class="section_form title">
+     {{ article.title }}
+        <br>
+        {{ article.date_post }}
+        <br>
+        {{ article.content }}
+         </section>
+        <a class="links" href="#">edit</a>
+        <a class="links" style="color: red">delete</a>
+    {% endfor %}
+
+{% endblock %}
