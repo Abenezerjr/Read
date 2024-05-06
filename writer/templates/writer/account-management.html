@@ -1,0 +1,37 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block css %}
+     <link href="{% static 'css/form.css'  %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+    <section class="section_form">
+   <div class="container_form" id="container">
+                <form method="POST" autocomplete="off" >
+                    {% csrf_token %}
+                <h1>Update account</h1>
+
+                    {% for field in form %}
+              {% if field.name == 'is_writer' %}
+             <label class="form__label" > {{ field.label }} {{ field }}  </label>
+                        {% else %}
+                         {{field}}
+              {% endif %}
+
+
+{% endfor %}
+{#                <a href="#">Forget Your Password?</a>#}
+                <button type="submit">Update</button>
+            </form>
+        </div>
+
+     <section class="section_form">
+         <h1>you don't need account ?</h1>
+         <a class="links"  href="{% url 'delete-account' %}" >delete</a>
+     </section>
+    </section>
+
+
+{% endblock %}

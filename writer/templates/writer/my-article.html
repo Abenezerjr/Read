@@ -11,12 +11,23 @@
         <h2 style="font-size: 20px">
      {{ article.title }}
             </h2>
-        <br>
-        {{ article.date_post }}
-        <br>
+
             <p style="font-size: 14px">
         {{ article.content }}
                 </p>
+        <br>
+        {{ article.date_post }}
+        <br>
+            {% if article.is_premium  == True %}
+            <hr>
+            <strong>⭐ Premium</strong>
+          {% elif article.is_premium  == False %}
+            <strong>Standard</strong>
+            {% endif %}
+
+        <br>
+
+        <br>
          </section>
         <a class="links" href={% url 'update-article' article.id %}>Update</a>
         <a class="links" href={% url 'delete_article' article.id %}>Delete</a>
