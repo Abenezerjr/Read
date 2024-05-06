@@ -60,5 +60,14 @@ def update_article(request, pk):
     return render(request, 'writer/update-article.html', context)
 
 
-def delete_article(request):
-    pass
+def delete_article(request, pk):
+    article = Article.objects.get(id=pk, user=request.user)
+
+    if request.method == 'POST':
+        article.delete()
+        return redirect('my_articles')
+
+    context = {
+        'article': article
+    }
+    return render(request, 'writer/delete-article.html', context)

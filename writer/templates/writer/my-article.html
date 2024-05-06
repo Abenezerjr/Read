@@ -8,14 +8,19 @@
 <h1>My article list </h1>
     {% for article in articles %}
         <section class="section_form title">
+        <h2 style="font-size: 20px">
      {{ article.title }}
+            </h2>
         <br>
         {{ article.date_post }}
         <br>
+            <p style="font-size: 14px">
         {{ article.content }}
+                </p>
          </section>
-        <a class="links" href={% url 'update-article' article.id %}>edit</a>
-        <a class="links" style="color: red">delete</a>
+        <a class="links" href={% url 'update-article' article.id %}>Update</a>
+        <a class="links" href={% url 'delete_article' article.id %}>Delete</a>
+
     {% endfor %}
 
 {% endblock %}
