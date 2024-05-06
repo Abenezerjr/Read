@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block css %}
+<link href="{% static 'css/form.css'  %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+    <section class="section_form">
+    <div class="container_form1">
+
+
+<form method="POST" action="#">
+  {% csrf_token %}
+    <h2>Update article here</h2>
+    {{ form }}
+
+  <button type="submit">update</button>
+</form>
+            </div>
+     </section>
+{% endblock %}

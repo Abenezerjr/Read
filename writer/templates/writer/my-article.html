@@ -14,7 +14,7 @@
         <br>
         {{ article.content }}
          </section>
-        <a class="links" href="#">edit</a>
+        <a class="links" href={% url 'update-article' article.id %}>edit</a>
         <a class="links" style="color: red">delete</a>
     {% endfor %}
 
