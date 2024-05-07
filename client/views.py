@@ -9,7 +9,18 @@ from django.core.exceptions import ValidationError
 
 @login_required(login_url='login')
 def client_dashboard(request):
-    return render(request, 'client/client-dashbored.html')
+    try:
+        subDetails=Subscription.objects.get(user=request.user)
+        subscription_plan=subDetails.subscription_plan
+        context={'SubPlan':subscription_plan}
+        return render(request, 'client/client-dashbored.html',context)
+    except:
+        subscription_plan='None'
+        context = {'SubPlan': subscription_plan}
+        return render(request, 'client/client-dashbored.html', context)
+
+
+
 
 
 @login_required(login_url='login')
