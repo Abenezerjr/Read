@@ -10,17 +10,14 @@ from django.core.exceptions import ValidationError
 @login_required(login_url='login')
 def client_dashboard(request):
     try:
-        subDetails=Subscription.objects.get(user=request.user)
-        subscription_plan=subDetails.subscription_plan
-        context={'SubPlan':subscription_plan}
-        return render(request, 'client/client-dashbored.html',context)
-    except:
-        subscription_plan='None'
+        subDetails = Subscription.objects.get(user=request.user)
+        subscription_plan = subDetails.subscription_plan
         context = {'SubPlan': subscription_plan}
         return render(request, 'client/client-dashbored.html', context)
-
-
-
+    except:
+        subscription_plan = 'None'
+        context = {'SubPlan': subscription_plan}
+        return render(request, 'client/client-dashbored.html', context)
 
 
 @login_required(login_url='login')
@@ -46,4 +43,8 @@ def read_article(request):
 
 
 def subscription_locked(request):
-    return render(request,'client/subscription-locked.html')
+    return render(request, 'client/subscription-locked.html')
+
+
+def subscription_plans(request):
+    return render(request, 'client/subscription-plans.html')
