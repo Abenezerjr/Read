@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block css %}
+<link href="{% static 'css/form.css'  %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+
+<h1>My article list </h1>
+    {% for article in articles %}
+        <section class="section_form title">
+        <h2 style="font-size: 20px">
+     {{ article.title }}
+            </h2>
+
+            <p style="font-size: 14px">
+        {{ article.content }}
+                </p>
+        <br>
+        {{ article.date_post }}
+        <br>
+            {% if article.is_premium  == True %}
+            <hr>
+            <strong>⭐ Premium</strong>
+          {% elif article.is_premium  == False %}
+            <strong>Standard</strong>
+            {% endif %}
+
+        <br>
+         </section>
+
+    {% endfor %}
+
+{% endblock %}
