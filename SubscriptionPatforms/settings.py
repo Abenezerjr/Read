@@ -41,6 +41,8 @@ INSTALLED_APPS = [
 ]
 
 AUTH_USER_MODEL = 'account.CustomUser'
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
+# allow you open app PayPal
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
