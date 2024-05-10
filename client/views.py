@@ -3,6 +3,7 @@ from writer.models import Article
 from django.contrib.auth.decorators import login_required
 from .models import Subscription
 from django.core.exceptions import ValidationError
+from .forms import ClientAccountManagementForm
 
 
 # Create your views here.
@@ -48,3 +49,18 @@ def subscription_locked(request):
 
 def subscription_plans(request):
     return render(request, 'client/subscription-plans.html')
+
+
+def client_account_management(request):
+    form = ClientAccountManagementForm(instance=request.user)
+
+    if request.method == 'POST':
+        form = ClientAccountManagementForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('client-dashboard')
+
+    context = {
+        'form': form
+    }
+    return render(request, 'client/account-management.html', context)

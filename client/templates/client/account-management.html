@@ -8,30 +8,40 @@
 
 {% block content %}
     <section class="section_form">
+        <section class="section_form title">
+        <h1>Subscription status:</h1>
+              <h1>{{ SubPlan }}😒</h1>
+              <p>You can subscribe 👇 </p>
+          <a class="links" href={% url 'subscription_plans' %}>Subscribe</a>
+
+         </section>
    <div class="container_form" id="container">
                 <form method="POST" autocomplete="off" >
                     {% csrf_token %}
                 <h1>Update account</h1>
 
                     {% for field in form %}
-              {% if field.name == 'is_writer' %}
-             <label class="form__label" > {{ field.label }} {{ field }}  </label>
-                        {% else %}
+{#              {% if field.name == 'is_writer' %}#}
+{#             <label class="form__label" > {{ field.label }} {{ field }}  </label>#}
+{#                        {% else %}#}
                          {{field}}
-              {% endif %}
+{#              {% endif %}#}
 
 
 {% endfor %}
 {#                <a href="#">Forget Your Password?</a>#}
                 <button type="submit">Update</button>
+                       <h1>you don't need this account ?</h1>
+         <a class="links"  href="{% url 'delete-account' %}" style="color: white" >delete</a>
             </form>
         </div>
 
-     <section class="section_form">
-         <h1>you don't need this account ?</h1>
-         <a class="links"  href="{% url 'delete-account' %}" >delete</a>
-     </section>
+{#     <section class="section_form">#}
+
+{#     </section>#}
+
     </section>
 
 
 {% endblock %}
+
