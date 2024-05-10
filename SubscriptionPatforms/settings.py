@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'client',
 ]
 
-AUTH_USER_MODEL = 'account.CustomUser'
+AUTH_USER_MODEL = 'account.CustomUser'  # register customer user auth
 SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
 # allow you open app PayPal
 

@@ -93,3 +93,7 @@ def create_subscription(request, subID, plan):
     }
 
     return render(request, 'client/create-subscription.html', context)
+
+
+def delete_subscription(request, subID):
+    return render(request, 'client/delete_subscription.html')
