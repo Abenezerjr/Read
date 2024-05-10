@@ -1,7 +1,22 @@
 {% extends 'main.html' %}
+{% load static %}
+
+{% block css %}
+<link href="{% static 'css/form.css'  %}" rel="stylesheet">
+{% endblock %}
 
 
 {% block content %}
-    <h2>Creat-subscription</h2>
+      <section class="section_form title">
+    <h2{{ subscriptionPlan }}>subscription activated</h2>
+      <br>
+
+      Congratulation 0n activating your {{ subscriptionPlan }} subscription
+
+      You are now eligible perks that are associated with this plan
+
+        <a class="links" href={% url 'read-article' %}>Browse article</a>
+      </section>
+
 
 {% endblock %}
