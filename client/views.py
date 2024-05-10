@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Subscription
 from django.core.exceptions import ValidationError
 from .forms import ClientAccountManagementForm
+from account.models import CustomUser
 
 
 # Create your views here.
@@ -64,3 +65,31 @@ def client_account_management(request):
         'form': form
     }
     return render(request, 'client/account-management.html', context)
+
+
+def create_subscription(request, subID, plan):
+    custom_user = CustomUser.objects.get(email=request.user)
+    firstName = custom_user.first_name
+    lastName = custom_user.last_name
+
+    fullName = firstName + ' ' + lastName
+
+    selected_sub_plan = plan
+    if selected_sub_plan == 'Standard':
+        sub_cost = 4.99
+    elif selected_sub_plan == 'Premium':
+        sub_cost = 9.99
+
+    subscription = Subscription.objects.create(
+        subscriber_name=fullName,
+        subscription_plan=selected_sub_plan,
+        subscription_cost=sub_cost,
+        paypal_subscription_id=subID,
+        is_active=True,
+        user=request.user
+    )
+    context = {
+        "subscriptionPlan": selected_sub_plan
+    }
+
+    return render(request, 'client/create-subscription.html', context)
