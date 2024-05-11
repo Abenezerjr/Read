@@ -14,31 +14,41 @@
               <p>You can subscribe 👇 </p>
           <a class="links" href={% url 'subscription_plans' %}>Subscribe</a>
 
-         </section>
-   <div class="container_form" id="container">
-                <form method="POST" autocomplete="off" >
-                    {% csrf_token %}
-                <h1>Update account</h1>
 
-                    {% for field in form %}
+         </section>
+{#   <div class="container_form" id="container">#}
+{#                <form method="POST" autocomplete="off" >#}
+{#                    {% csrf_token %}#}
+{#                <h1>Update account</h1>#}
+{##}
+{#                    {% for field in form %}#}
 {#              {% if field.name == 'is_writer' %}#}
 {#             <label class="form__label" > {{ field.label }} {{ field }}  </label>#}
 {#                        {% else %}#}
-                         {{field}}
+{#                         {{field}}#}
 {#              {% endif %}#}
-
-
-{% endfor %}
+{##}
+{##}
+{#{% endfor %}#}
 {#                <a href="#">Forget Your Password?</a>#}
-                <button type="submit">Update</button>
-                       <h1>you don't need this account ?</h1>
-         <a class="links"  href="{% url 'delete-account' %}" style="color: white" >delete</a>
-            </form>
-        </div>
+{#                <button type="submit">Update</button>#}
+{#                       <h1>you don't need this account ?</h1>#}
+{#         <a class="links"  href="{% url 'delete-account' %}" style="color: white" >delete</a>#}
+{#            </form>#}
+{#        </div>#}
 
 {#     <section class="section_form">#}
 
 {#     </section>#}
+
+        {% if SubscriptionID %}
+        <section class="section_form">
+        <h1>Cancel subscription plan</h1>
+            <br>
+            <a class="links" href={% url 'delete-subscription' SubscriptionID %}>Cancel Subscribe</a>
+        </section>
+            {% else %}
+    {% endif %}
 
     </section>
 

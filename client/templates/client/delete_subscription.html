@@ -1,11 +1,21 @@
 {% extends 'main.html' %}
+{% load static %}
 
 {% block css %}
-
+<link href="{% static 'css/form.css'  %}" rel="stylesheet">
 {% endblock %}
 
-{% block content %}
 
-    <h2>delete subscription</h2>
+{% block content %}
+      <section class="section_form title">
+    <h2>subscription Canceled</h2>
+      <br>
+          ❌❌
+
+         we regent to in form you that your subscription has been cancelled
+          as per request.Thank you for your past support
+        <a class="links" href={% url 'client-dashboard' %}>Return to dash bored</a>
+      </section>
+
 
 {% endblock %}

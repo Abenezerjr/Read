@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from writer.models import Article
 from django.contrib.auth.decorators import login_required
-from .models import Subscription
+from client.models import Subscription
 from django.core.exceptions import ValidationError
 from .forms import ClientAccountManagementForm
 from account.models import CustomUser
+from .paypal import *
 
 
 # Create your views here.
@@ -53,18 +54,25 @@ def subscription_plans(request):
 
 
 def client_account_management(request):
-    form = ClientAccountManagementForm(instance=request.user)
+    # form = ClientAccountManagementForm(instance=request.user)
+    #
+    # if request.method == 'POST':
+    #     form = ClientAccountManagementForm(request.POST, instance=request.user)
+    #     if form.is_valid():
+    #         form.save()
+    #         return redirect('client-dashboard')
+    try:
+        subDetails = Subscription.objects.get(user=request.user)
 
-    if request.method == 'POST':
-        form = ClientAccountManagementForm(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
-            return redirect('client-dashboard')
+        subscription_id = subDetails.paypal_subscription_id
+        context = {
+            # 'form': form,
+            'SubscriptionID': subscription_id
+        }
+        return render(request, 'client/account-management.html', context)
+    except:
 
-    context = {
-        'form': form
-    }
-    return render(request, 'client/account-management.html', context)
+        return render(request, 'client/account-management.html')
 
 
 def create_subscription(request, subID, plan):
@@ -96,4 +104,13 @@ def create_subscription(request, subID, plan):
 
 
 def delete_subscription(request, subID):
+    # delete subscription from paypal
+    access_token = get_access_token()
+
+    cancel_subscription_paypal(access_token, subID)
+
+    # Delete a subscription from Django application
+    subscription = Subscription.objects.get(user=request.user, paypal_subscription_id=subID)
+
+    subscription.delete()
     return render(request, 'client/delete_subscription.html')
