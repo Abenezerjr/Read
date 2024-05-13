@@ -114,3 +114,7 @@ def delete_subscription(request, subID):
 
     subscription.delete()
     return render(request, 'client/delete_subscription.html')
+
+
+def update_subscription(request, subID):
+    pass
