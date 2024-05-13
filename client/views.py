@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from writer.models import Article
+from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from client.models import Subscription
 from django.core.exceptions import ValidationError
@@ -117,4 +118,13 @@ def delete_subscription(request, subID):
 
 
 def update_subscription(request, subID):
-    pass
+    access_token = get_access_token()
+
+    approve_link = update_subscription_paypal(access_token, subID)
+
+    if approve_link:
+        return redirect(approve_link)
+    else:
+        return HttpResponse("unable to obtain the approval link")
+
+# TODO 'Update subscription set up integrate a paypal account"
