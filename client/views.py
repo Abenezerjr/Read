@@ -127,4 +127,13 @@ def update_subscription(request, subID):
     else:
         return HttpResponse("unable to obtain the approval link")
 
-# TODO 'Update subscription set up integrate a paypal account"
+
+def paypal_update_sub_confirmed(request):
+    subDetails = Subscription.objects.get(user=request.user)
+    subscriptionID = subDetails.paypal_subscription_id
+
+    context = {
+        'subscriptionID': subscriptionID
+    }
+
+    return render(request, 'client/paypal-update-sub-confiremd.html',context)

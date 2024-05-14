@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+
+{% extends 'main.html' %}
+{% load static %}
+
+{% block css %}
+     <link href="{% static 'css/form.css'  %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+    <section class="section_form">
+        <section class="section_form title">
+        <h1>Paypal subscription update confirmed</h1>
+
+              <p>Your subscription Updated  </p>
+          <a class="links" href={% url '' %}>confirm for final approval</a>
+
+
+         </section>
+
+{% endblock %}

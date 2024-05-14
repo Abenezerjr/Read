@@ -47,6 +47,13 @@
             <br>
             <a class="links" href={% url 'delete-subscription' SubscriptionID %}>Cancel Subscribe</a>
         </section>
+{#            update#}
+         <section class="section_form">
+        <h1>Update subscription plan</h1>
+            <br>
+            <a class="links" href={% url 'update-subscription' SubscriptionID %}>update Subscribe</a>
+        </section>
+
             {% else %}
     {% endif %}
 
