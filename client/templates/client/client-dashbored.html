@@ -5,13 +5,18 @@
 {% endblock %}
 {% block content %}
 
-        <h1>Well come {{ request.user.first_name }}👋</h1>
+        <h1>WellCome {{ request.user.first_name }}👋</h1>
           <section class="section_form title">
-        <h1>Subscription status:</h1>
-              <h1>{{ SubPlan }}😒</h1>
-              <p>You can subscribe 👇 </p>
-          <a class="links" href={% url 'subscription_plans' %}>Subscribe</a>
 
+              {% if SubscriptionID %}
+          <h1>Subscription status:</h1>
+              <h1>{{ SubPlan }}😒</h1>
+
+             {% else %}
+            <h1>{{ SubPlan }}😒</h1>
+            <p>You can subscribe 👇 </p>
+          <a class="links" href={% url 'subscription_plans' %}>Subscribe</a>
+        {% endif %}
          </section>
 
 {% endblock %}

@@ -7,15 +7,22 @@
 {% endblock %}
 
 {% block content %}
-    <section class="section_form">
-        <section class="section_form title">
-        <h1>Subscription status:</h1>
+
+        <section class="section_form">
+
+            <section class="section_form title">
+                 {% if SubscriptionID %}
+            <h1>Subscription status:</h1>
+              <h1>{{ SubPlan }}⭐</h1>
+            {% else %}
+             <h1>Subscription status:</h1>
               <h1>{{ SubPlan }}😒</h1>
               <p>You can subscribe 👇 </p>
           <a class="links" href={% url 'subscription_plans' %}>Subscribe</a>
 
-
+    {% endif %}
          </section>
+
 {#   <div class="container_form" id="container">#}
 {#                <form method="POST" autocomplete="off" >#}
 {#                    {% csrf_token %}#}
@@ -45,20 +52,43 @@
         <section class="section_form">
         <h1>Cancel subscription plan</h1>
             <br>
-            <a class="links" href={% url 'delete-subscription' SubscriptionID %}>Cancel Subscribe</a>
+            <a id="deleteButton" class="links" href={% url 'delete-subscription' SubscriptionID %}>Cancel Subscribe</a>
         </section>
 {#            update#}
          <section class="section_form">
         <h1>Update subscription plan</h1>
             <br>
-            <a class="links" href={% url 'update-subscription' SubscriptionID %}>update Subscribe</a>
+            <a id="updateButton" class="links" href={% url 'update-subscription' SubscriptionID %}>update Subscribe</a>
         </section>
 
             {% else %}
     {% endif %}
 
     </section>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js">
 
+</script>
+    <script>
+    $(document).ready(function ()
+        {
+            $("#deleteButton").on('click',function(){
+               $(this).text('processing..') ;
+            })
+        }
+    )
+
+     $(document).ready(function ()
+        {
+            $("#updateButton").on('click',function(){
+               $(this).text('processing..') ;
+            })
+        }
+    )
+
+
+
+
+    </script>
 
 {% endblock %}
 

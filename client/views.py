@@ -16,7 +16,10 @@ def client_dashboard(request):
     try:
         subDetails = Subscription.objects.get(user=request.user)
         subscription_plan = subDetails.subscription_plan
-        context = {'SubPlan': subscription_plan}
+        subscription_id = subDetails.paypal_subscription_id
+        context = {'SubPlan': subscription_plan,
+                   'SubscriptionID': subscription_id,
+                   }
         return render(request, 'client/client-dashbored.html', context)
     except:
         subscription_plan = 'None'
@@ -53,7 +56,10 @@ def subscription_locked(request):
 
 @login_required(login_url='login')
 def subscription_plans(request):
-    return render(request, 'client/subscription-plans.html')
+    if not Subscription.objects.filter(user=request.user).exists():
+        return render(request, 'client/subscription-plans.html')
+    else:
+        return redirect('client-dashboard')
 
 
 @login_required(login_url='login')
@@ -69,9 +75,11 @@ def client_account_management(request):
         subDetails = Subscription.objects.get(user=request.user)
 
         subscription_id = subDetails.paypal_subscription_id
+        subscription_plan = subDetails.subscription_plan
         context = {
             # 'form': form,
-            'SubscriptionID': subscription_id
+            'SubscriptionID': subscription_id,
+            'SubPlan': subscription_plan
         }
         return render(request, 'client/account-management.html', context)
     except:
@@ -82,44 +90,50 @@ def client_account_management(request):
 @login_required(login_url='login')
 def create_subscription(request, subID, plan):
     custom_user = CustomUser.objects.get(email=request.user)
-    firstName = custom_user.first_name
-    lastName = custom_user.last_name
+    if not Subscription.objects.filter(user=request.user).exists():
+        firstName = custom_user.first_name
+        lastName = custom_user.last_name
 
-    fullName = firstName + ' ' + lastName
+        fullName = firstName + ' ' + lastName
 
-    selected_sub_plan = plan
-    if selected_sub_plan == 'Standard':
-        sub_cost = 4.99
-    elif selected_sub_plan == 'Premium':
-        sub_cost = 9.99
+        selected_sub_plan = plan
+        if selected_sub_plan == 'Standard':
+            sub_cost = 4.99
+        elif selected_sub_plan == 'Premium':
+            sub_cost = 9.99
 
-    subscription = Subscription.objects.create(
-        subscriber_name=fullName,
-        subscription_plan=selected_sub_plan,
-        subscription_cost=sub_cost,
-        paypal_subscription_id=subID,
-        is_active=True,
-        user=request.user
-    )
-    context = {
-        "subscriptionPlan": selected_sub_plan
-    }
+        subscription = Subscription.objects.create(
+            subscriber_name=fullName,
+            subscription_plan=selected_sub_plan,
+            subscription_cost=sub_cost,
+            paypal_subscription_id=subID,
+            is_active=True,
+            user=request.user
+        )
+        context = {
+            "subscriptionPlan": selected_sub_plan
+        }
 
-    return render(request, 'client/create-subscription.html', context)
+        return render(request, 'client/create-subscription.html', context)
+    else:
+        return redirect('client-dashboard')
 
 
 @login_required(login_url='login')
 def delete_subscription(request, subID):
     # delete subscription from paypal
-    access_token = get_access_token()
+    try:
+        access_token = get_access_token()
 
-    cancel_subscription_paypal(access_token, subID)
+        cancel_subscription_paypal(access_token, subID)
 
-    # Delete a subscription from Django application
-    subscription = Subscription.objects.get(user=request.user, paypal_subscription_id=subID)
+        # Delete a subscription from Django application
+        subscription = Subscription.objects.get(user=request.user, paypal_subscription_id=subID)
 
-    subscription.delete()
-    return render(request, 'client/delete_subscription.html')
+        subscription.delete()
+        return render(request, 'client/delete_subscription.html')
+    except:
+        return redirect('client-dashboard')
 
 
 @login_required(login_url='login')
@@ -158,13 +172,13 @@ def app_update_sub_confirmed(request, subID):
         new_plan_cost = "4.99"
 
         Subscription.objects.filter(paypal_subscription_id=subID).update(subscription_plan=new_plan_name
-                                                                         ,subscription_cost=new_plan_cost)
+                                                                         , subscription_cost=new_plan_cost)
 
-    elif  current_plan_id == 'P-7RA300099Y398215DMZCI5KA':
+    elif current_plan_id == 'P-7RA300099Y398215DMZCI5KA':
         new_plan_name = 'Premium'
         new_plan_cost = "9.99"
 
         Subscription.objects.filter(paypal_subscription_id=subID).update(subscription_plan=new_plan_name
-                                                                         ,subscription_cost=new_plan_cost)
+                                                                         , subscription_cost=new_plan_cost)
 
-    return render(request,'client/app-update-sub-confirem.html')
+    return render(request, 'client/app-update-sub-confirem.html')
