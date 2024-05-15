@@ -46,14 +46,17 @@ def read_article(request):
     return render(request, 'client/read-article.html', context)
 
 
+@login_required(login_url='login')
 def subscription_locked(request):
     return render(request, 'client/subscription-locked.html')
 
 
+@login_required(login_url='login')
 def subscription_plans(request):
     return render(request, 'client/subscription-plans.html')
 
 
+@login_required(login_url='login')
 def client_account_management(request):
     # form = ClientAccountManagementForm(instance=request.user)
     #
@@ -76,6 +79,7 @@ def client_account_management(request):
         return render(request, 'client/account-management.html')
 
 
+@login_required(login_url='login')
 def create_subscription(request, subID, plan):
     custom_user = CustomUser.objects.get(email=request.user)
     firstName = custom_user.first_name
@@ -104,6 +108,7 @@ def create_subscription(request, subID, plan):
     return render(request, 'client/create-subscription.html', context)
 
 
+@login_required(login_url='login')
 def delete_subscription(request, subID):
     # delete subscription from paypal
     access_token = get_access_token()
@@ -117,6 +122,7 @@ def delete_subscription(request, subID):
     return render(request, 'client/delete_subscription.html')
 
 
+@login_required(login_url='login')
 def update_subscription(request, subID):
     access_token = get_access_token()
 
@@ -128,12 +134,20 @@ def update_subscription(request, subID):
         return HttpResponse("unable to obtain the approval link")
 
 
+@login_required(login_url='login')
 def paypal_update_sub_confirmed(request):
-    subDetails = Subscription.objects.get(user=request.user)
-    subscriptionID = subDetails.paypal_subscription_id
+    try:
+        subDetails = Subscription.objects.get(user=request.user)
+        subscriptionID = subDetails.paypal_subscription_id
 
-    context = {
-        'subscriptionID': subscriptionID
-    }
+        context = {
+            'subscriptionID': subscriptionID
+        }
 
-    return render(request, 'client/paypal-update-sub-confiremd.html',context)
+        return render(request, 'client/paypal-update-sub-confiremd.html', context)
+    except:
+        return render(request, 'client/paypal-update-sub-confiremd.html')
+
+
+def app_update_sub_confirmed(request):
+    pass
