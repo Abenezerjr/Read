@@ -23,30 +23,23 @@
     {% endif %}
          </section>
 
-{#   <div class="container_form" id="container">#}
-{#                <form method="POST" autocomplete="off" >#}
-{#                    {% csrf_token %}#}
-{#                <h1>Update account</h1>#}
-{##}
-{#                    {% for field in form %}#}
-{#              {% if field.name == 'is_writer' %}#}
-{#             <label class="form__label" > {{ field.label }} {{ field }}  </label>#}
-{#                        {% else %}#}
-{#                         {{field}}#}
-{#              {% endif %}#}
-{##}
-{##}
-{#{% endfor %}#}
-{#                <a href="#">Forget Your Password?</a>#}
-{#                <button type="submit">Update</button>#}
-{#                       <h1>you don't need this account ?</h1>#}
-{#         <a class="links"  href="{% url 'delete-account' %}" style="color: white" >delete</a>#}
-{#            </form>#}
-{#        </div>#}
+   <div class="container_form" id="container">
+                <form method="POST" autocomplete="off" >
+                    {% csrf_token %}
+                <h1>Update account</h1>
 
-{#     <section class="section_form">#}
+                    {% for field in form %}
+              {% if field.name == 'is_writer' %}
+             <label class="form__label" > {{ field.label }} {{ field }}  </label>
+                        {% else %}
+                         {{field}}
+              {% endif %}
+{% endfor %}
+                    <button class="button" type="submit">Update</button>
+                </form>
 
-{#     </section>#}
+   </div>
+
 
         {% if SubscriptionID %}
         <section class="section_form">

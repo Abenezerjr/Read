@@ -64,14 +64,15 @@ def subscription_plans(request):
 
 @login_required(login_url='login')
 def client_account_management(request):
-    # form = ClientAccountManagementForm(instance=request.user)
-    #
-    # if request.method == 'POST':
-    #     form = ClientAccountManagementForm(request.POST, instance=request.user)
-    #     if form.is_valid():
-    #         form.save()
-    #         return redirect('client-dashboard')
     try:
+        form = ClientAccountManagementForm(instance=request.user)
+
+        if request.method == 'POST':
+            form = ClientAccountManagementForm(request.POST, instance=request.user)
+            if form.is_valid():
+                form.save()
+                return redirect('client-dashboard')
+
         subDetails = Subscription.objects.get(user=request.user)
 
         subscription_id = subDetails.paypal_subscription_id
@@ -79,12 +80,33 @@ def client_account_management(request):
         context = {
             # 'form': form,
             'SubscriptionID': subscription_id,
-            'SubPlan': subscription_plan
+            'SubPlan': subscription_plan,
+            'form': form
         }
         return render(request, 'client/account-management.html', context)
     except:
+        form = ClientAccountManagementForm(instance=request.user)
 
-        return render(request, 'client/account-management.html')
+        if request.method == 'POST':
+            form = ClientAccountManagementForm(request.POST, instance=request.user)
+            if form.is_valid():
+                form.save()
+                return redirect('client-dashboard')
+        context = {
+            'form': form
+        }
+
+        return render(request, 'client/account-management.html', context)
+
+
+def delete_account(request):
+    if request.method == "POST":
+        delete_user = CustomUser.objects.get(email=request.user)
+        delete_user.delete('')
+
+        return redirect('register')
+
+    return render(request, '#')
 
 
 @login_required(login_url='login')
