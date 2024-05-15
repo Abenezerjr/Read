@@ -11,4 +11,5 @@ urlpatterns = [
     path('delete-subscription/<subID>', views.delete_subscription, name='delete-subscription'),
     path('update-subscription/<subID>', views.update_subscription, name='update-subscription'),
     path('paypal-update-sub-confirmed/', views.paypal_update_sub_confirmed, name='paypal_update_sub_confirmed'),
+    path('app-update-sub-confirmed/<subID>', views.app_update_sub_confirmed, name='app-update-sub-confirmed'),
 ]

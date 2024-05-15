@@ -10,7 +10,7 @@
         <h1>Standard subscription</h1>
             <br>
             <hr>
-<div id="paypal-button-container-P-9VV53068FJ9165453MY5I7SY"></div>
+<div id="paypal-button-container-P-7064205047605035BMZCITBQ"></div>
 {#            clint id#}
 <script src="https://www.paypal.com/sdk/js?client-id=AaWVwtPsIhAcpoFocSi37r4UcsWafPKdQw8pTwzNvVExhTQldbCRTqwAimF4BRPU4dggFF8wPIa8t7-F&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
 <script>
@@ -24,7 +24,7 @@
       createSubscription: function(data, actions) {
         return actions.subscription.create({
           /* Creates the subscription */
-          plan_id: 'P-9VV53068FJ9165453MY5I7SY'
+          plan_id: 'P-7064205047605035BMZCITBQ'
         });
       },
       onApprove: function(data, actions) {
@@ -33,13 +33,13 @@
           window.open(current_url,'_self')
       }
 
-  }).render('#paypal-button-container-P-9VV53068FJ9165453MY5I7SY'); // Renders the PayPal button
+  }).render('#paypal-button-container-P-7064205047605035BMZCITBQ'); // Renders the PayPal button
 </script>
                 </section >
 
      <section class="section_form title">
         <h1>Premium subscription</h1>
-     <div id="paypal-button-container-P-13212774DJ560112BMY5JHAI"></div>
+     <div id="paypal-button-container-P-7RA300099Y398215DMZCI5KA"></div>
 
 
 
@@ -54,7 +54,7 @@
       createSubscription: function(data, actions) {
         return actions.subscription.create({
           /* Creates the subscription */
-          plan_id: 'P-13212774DJ560112BMY5JHAI'
+          plan_id: 'P-7RA300099Y398215DMZCI5KA'
         });
       },
       onApprove: function(data, actions) {
@@ -62,7 +62,7 @@
         var current_url = '/client/create-subscription/' + data.subscriptionID + '/Premium'
           window.open(current_url,'_self')
       }
-  }).render('#paypal-button-container-P-13212774DJ560112BMY5JHAI'); // Renders the PayPal button
+  }).render('#paypal-button-container-P-7RA300099Y398215DMZCI5KA'); // Renders the PayPal button
 </script>
 
      </section>

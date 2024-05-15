@@ -149,5 +149,22 @@ def paypal_update_sub_confirmed(request):
         return render(request, 'client/paypal-update-sub-confiremd.html')
 
 
-def app_update_sub_confirmed(request):
-    pass
+def app_update_sub_confirmed(request, subID):
+    access_token = get_access_token()
+    current_plan_id = get_current_subscription(access_token, subID)
+
+    if current_plan_id == 'P-7064205047605035BMZCITBQ':
+        new_plan_name = 'Standard'
+        new_plan_cost = "4.99"
+
+        Subscription.objects.filter(paypal_subscription_id=subID).update(subscription_plan=new_plan_name
+                                                                         ,subscription_cost=new_plan_cost)
+
+    elif  current_plan_id == 'P-7RA300099Y398215DMZCI5KA':
+        new_plan_name = 'Premium'
+        new_plan_cost = "9.99"
+
+        Subscription.objects.filter(paypal_subscription_id=subID).update(subscription_plan=new_plan_name
+                                                                         ,subscription_cost=new_plan_cost)
+
+    return render(request,'client/app-update-sub-confirem.html')
