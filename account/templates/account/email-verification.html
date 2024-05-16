@@ -1,0 +1,14 @@
+
+
+{% autoescape off %}
+
+    Hi
+
+    Please Varify your account by clicking on the link below
+
+    http://{{ domain }}{% url 'email-verification' uidb64=uid token=token %}
+
+
+
+
+{% endautoescape %}

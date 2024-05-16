@@ -1,10 +1,17 @@
 from django.shortcuts import render, HttpResponse, redirect
-
+from django.template.loader import render_to_string
+from django.utils.encoding import force_bytes, force_str
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.core.mail import send_mail
 from .forms import CreatUserForm
+from django.conf import settings
 
 from django.contrib.auth.forms import AuthenticationForm
 
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.sites.shortcuts import get_current_site
+from .token import UserVerificationTokenGenerator, user_tokenizer_generate
+from .models import CustomUser
 
 
 # Create your views here.
@@ -18,8 +25,31 @@ def UserRegister(request):
     if request.method == "POST":
         form = CreatUserForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('login')
+            user = form.save()
+            user.is_active = False
+            user.save()
+
+            current_site = get_current_site(request)
+
+            subject = 'Activate Your account'
+
+            message = render_to_string('account/email-verification.html', {
+
+                'user': user,
+                'domain': current_site.domain,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'token': user_tokenizer_generate.make_token(user)
+
+            })
+
+            user_email = user.email
+
+            send_mail(subject=subject, message=message, from_email=settings.EMAIL_HOST_USER,
+                      recipient_list=[user_email])
+
+            return redirect('email-verification-sent')
+
+        # email verification
 
     context = {
         'RegisterForm': form
@@ -55,3 +85,27 @@ def UserLogin(request):
 def UserLogout(request):
     logout(request)
     return redirect('login')
+
+
+def email_verification(request, uidb64, token):
+    unique_token = force_str(urlsafe_base64_decode(uidb64))
+    custom_user = CustomUser.objects.get(pk=unique_token)
+
+    if custom_user and user_tokenizer_generate.check_token(custom_user, token):
+        custom_user.is_active = True
+        custom_user.save()
+        return redirect('email-verification-success')
+    else:
+        return redirect('email-verification-failed')
+
+
+def email_verification_sent(request):
+    return render(request, 'account/email-verification-sent.html')
+
+
+def email_verification_success(request):
+    return render(request, 'account/email-verification-success.html')
+
+
+def email_verification_failed(request):
+    return render(request, 'account/email-verification-failed.html')
