@@ -3,7 +3,6 @@ from writer.models import Article
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from client.models import Subscription
-from django.core.exceptions import ValidationError
 from .forms import ClientAccountManagementForm
 from account.models import CustomUser
 from .paypal import *
