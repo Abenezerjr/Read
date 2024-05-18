@@ -23,7 +23,7 @@
                     {% for field in loginForm %}
                     {{ field }}
                     {% endfor %}
-                <a href="#">Forget Your Password?</a>
+                <a href="{% url 'reset_password' %}">Forget Your Password?</a>
                 <button type="submit">Sign In</button>
 {#                    {{ loginForm }}#}
 {#                    <button type="submit">Sign In</button>#}
