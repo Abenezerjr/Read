@@ -22,12 +22,18 @@ max-width: 80rem;
     font-weight: 700;
     letter-spacing: -0.025em;
     color: #111827;
+      font-family: "Roboto", sans-serif;
+    font-style: normal;
 }
 .section-para{
     margin-top: 1.5rem;
     font-size: 1.125rem;
    line-height: 1.75rem;
     color: #4B5563;
+    font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+
 }
 .header-section-a{
     display: flex;
@@ -70,16 +76,13 @@ max-width: 80rem;
     max-width: 100%;
 }
 
+
 @media (min-width: 1024px) {
       .section-hero-1-1 {
           padding-left: 2rem;
           padding-right: 2rem;
       }
-/*.section-hero-pic-line{*/
-/*      padding: 1rem;*/
-/*      margin: -1rem;*/
-/*      border-radius: 1rem;*/
-/*}*/
+
  }
 
 @media (min-width: 640px) {
@@ -100,6 +103,14 @@ max-width: 80rem;
  }
      .section-hero-pic{
           margin-top: 6rem;
+     }
+     .logos-class{
+         grid-template-columns: repeat(6, minmax(0, 1fr));
+         column-gap: 2.5rem;
+          row-gap: 3.5rem;
+          margin-left: 4rem;
+           /*max-width: 36rem;*/
+
      }
 
  }
