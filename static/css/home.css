@@ -1,3 +1,24 @@
+.main-body{
+
+}
+.main-main-main{
+     position: absolute;
+    inset-inline: 0; /* Logical equivalent for left: 0; right: 0; */
+    top: -10rem; /* -40px if the root font-size is 16px */
+    z-index: -10;
+    transform: translate3d(0, 0, 0); /* Apply GPU transformations */
+    overflow: hidden;
+    filter: blur(3rem);
+}
+.main-main{
+    position: relative;
+    left: calc(50% - 11rem);
+    aspect-ratio: 1155 / 678;
+    width: 50.125rem; /* 36.125rem equals 578px */
+    transform: translateX(-50%) rotate(40deg);
+    background: linear-gradient(to top right, #ff80b5, #9089fc);
+    opacity: 0.3;
+}
 .section-hero-1{
     display: flex;
     justify-content: center;
