@@ -1,14 +1,48 @@
 {% extends 'main.html' %}
-
+{% load static %}
 {% block css %}
 
-
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock %}
 
 {% block content %}
 
 <body>
-  <div class="bg-white">
+  <div class="section-hero-1">
+      <div class="section-hero-1-1">
+          <div class="section-hero-1-2">
+              <h1 class="header-section">
+                Deploy to the cloud with confidence
+              </h1>
+              <p class="section-para">
+                  Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
+                lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
+                fugiat aliqua.
+
+              </p>
+              <div class="header-section-a">
+                  <a href="#" class="header-section-link">
+                      Get started
+                  </a>
+                  <a href="#" class="header-section-link-2">
+                      Learn more <span aria-hidden="true">→</span>
+
+                  </a>
+
+              </div>
+              <div class="section-hero-pic">
+                  <img src="{% static 'images/ai.png' %}"
+                           class="section-hero-img"
+                           alt="article-login-page"
+                           width="1000" height="500">
+
+
+
+              </div>
+
+          </div>
+
+      </div>
 
 
 

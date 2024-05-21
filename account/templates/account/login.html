@@ -18,15 +18,13 @@
 
                 </div>
                 <span>or use your email password</span>
-{#                <input type="email" placeholder="Email">#}
-{#                <input type="password" placeholder="Password">#}
+
                     {% for field in loginForm %}
                     {{ field }}
                     {% endfor %}
                 <a href="{% url 'reset_password' %}">Forget Your Password?</a>
                 <button type="submit">Sign In</button>
-{#                    {{ loginForm }}#}
-{#                    <button type="submit">Sign In</button>#}
+
             </form>
         </div>
 

@@ -1,0 +1,105 @@
+.section-hero-1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     padding-top: 6rem;
+     padding-bottom: 6rem;
+}
+.section-hero-1-1{
+/*padding-left: 8.5rem;*/
+/*padding-right: 4.5rem;*/
+max-width: 80rem;
+
+}
+.section-hero-1-2{
+    max-width: 42rem;
+    text-align: center;
+    /*margin-right: 10rem;*/
+}
+.header-section{
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: #111827;
+}
+.section-para{
+    margin-top: 1.5rem;
+    font-size: 1.125rem;
+   line-height: 1.75rem;
+    color: #4B5563;
+}
+.header-section-a{
+    display: flex;
+   margin-top: 2.5rem;
+   column-gap: 1.5rem;
+   justify-content: center;
+   align-items: center;
+}
+.header-section-link{
+    /*6.425 */
+    padding: 0.625rem 0.875rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #4F46E5;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        text-decoration: none;
+    }
+.header-section-link:hover {
+ background-color: #6366F1;
+ }
+.header-section-link-1{
+    font-size: 0.875rem;
+/*line-height: 1.25rem; */
+    font-weight: 600;
+   line-height: 1.5rem;
+    color: #111827;
+}
+.section-hero-pic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 80%;
+     margin-top: 4rem;
+}
+.section-hero-img{
+    margin-left: 6rem;
+    max-width: 100%;
+}
+
+@media (min-width: 1024px) {
+      .section-hero-1-1 {
+          padding-left: 2rem;
+          padding-right: 2rem;
+      }
+/*.section-hero-pic-line{*/
+/*      padding: 1rem;*/
+/*      margin: -1rem;*/
+/*      border-radius: 1rem;*/
+/*}*/
+ }
+
+@media (min-width: 640px) {
+   .section-hero-1{
+        padding-top: 8rem;
+       padding-bottom: 8rem;
+   }
+    .section-hero-1-1{
+        padding-left: 2rem;
+
+    }
+    .section-hero-pic{
+       margin-top: 6rem;
+    }
+     .header-section{
+  font-size: 3.75rem;
+  line-height: 1;
+ }
+     .section-hero-pic{
+          margin-top: 6rem;
+     }
+
+ }
