@@ -14,16 +14,14 @@
   <body>
     <header class="header">
       <a href="{% url '' %}">
-        <img class="logo" alt="logo" src="" />
+        <img class="logo" alt="logo" src="{% static 'images/LOGO.png' %}" />
       </a>
       <nav class="main-nav">
         <ul class="main-nav-list">
-{#          <li><a class="main-nav-link" href="#">Register</a></li>#}
+
 
           <li>
-{#            <a class="main-nav-link" href="#testimonials">Testimonials</a>#}
-{#          </li>#}
-{#          <li><a class="main-nav-link" href="#price">Pricing</a></li>#}
+
          {% if request.user.is_authenticated %}
 
 

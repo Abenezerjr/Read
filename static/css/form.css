@@ -56,7 +56,7 @@ button {
   background-color: #512da8;
   color: #fff;
   font-size: 12px;
-  padding: 10px 45px;
+  /*padding: 10px 45px;*/
   border: 1px solid transparent;
   border-radius: 8px;
   font-weight: 600;

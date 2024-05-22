@@ -1,5 +1,5 @@
 .main-body{
-
+ height: 30rem;
 }
 .main-main-main{
      position: absolute;
@@ -10,6 +10,8 @@
     overflow: hidden;
     filter: blur(3rem);
 }
+
+
 .main-main{
     position: relative;
     left: calc(50% - 11rem);
@@ -18,6 +20,25 @@
     transform: translateX(-50%) rotate(40deg);
     background: linear-gradient(to top right, #ff80b5, #9089fc);
     opacity: 0.3;
+}
+
+.main-down{
+    position: absolute;
+  left: -20rem;
+  top: -14rem;
+     overflow: hidden;
+  transform: translateZ(0); /* This is equivalent to transform-gpu in Tailwind */
+  filter: blur(64px); /* Assuming 3xl corresponds to 64px in Tailwind's blur scale */
+}
+.main-down-down{
+
+    /*position: relative;*/
+    aspect-ratio: 1897 / 845;
+    width: 68.5625rem;
+    /*transform: translateX(-50%) rotate(40deg);*/
+     overflow: hidden;
+  background-image: linear-gradient(to right, #ff4694, #776fff);
+  opacity: 0.45;
 }
 .section-hero-1{
     display: flex;
