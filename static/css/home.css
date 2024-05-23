@@ -10,8 +10,6 @@
     overflow: hidden;
     filter: blur(3rem);
 }
-
-
 .main-main{
     position: relative;
     left: calc(50% - 11rem);
