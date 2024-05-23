@@ -1,15 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 
-/** {*/
-/*  margin: 0;*/
-/*  padding: 0;*/
-/*  box-sizing: border-box;*/
-/*  font-family: "Montserrat", sans-serif;*/
-/*}*/
+
 
 .section_form {
-  /* background-color: #0fff; */
-  /* background: linear-gradient(to right, #fff, #000); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,11 +45,11 @@
   margin: 15px 0 10px;
 }
 
-button {
+.button-main {
   background-color: #512da8;
   color: #fff;
   font-size: 12px;
-  /*padding: 10px 45px;*/
+  padding: 10px 45px;
   border: 1px solid transparent;
   border-radius: 8px;
   font-weight: 600;
@@ -66,7 +59,7 @@ button {
   cursor: pointer;
 }
 
- button.hidden {
+.button-main.hidden {
   background-color: transparent;
   border-color: #fff;
 }

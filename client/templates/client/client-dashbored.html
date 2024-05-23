@@ -1,23 +1,103 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block css %}
-<link href="{% static 'css/form.css'  %}" rel="stylesheet">
+<link href="{% static 'css/client-dashbored.css'  %}" rel="stylesheet">
 {% endblock %}
 {% block content %}
 
-        <h1>WellCome {{ request.user.first_name }}👋</h1>
-          <section class="section_form title">
+{#        <h1>WellCome {{ request.user.first_name }}👋</h1>#}
+{#          <section class="section_form title">#}
+{##}
+{#              {% if SubscriptionID and SubPlan == 'Standard' %}#}
+{#          <h1>Subscription status:</h1>#}
+{#              <h1>{{ SubPlan }}⭐⭐</h1>#}
+{#              {% elif SubscriptionID and SubPlan == 'Premium' %}#}
+{#                  <h1>{{ SubPlan }}⭐⭐⭐⭐</h1>#}
+{#             {% else %}#}
+{#            <h1>{{ SubPlan }}😒</h1>#}
+{#            <p>You can subscribe 👇 </p>#}
+{#          <a class="links" href={% url 'subscription_plans' %}>Subscribe</a>#}
+{#        {% endif %}#}
+{#         </section>#}
+    <main>
+    <section class="hero-section">
+      <div class="hero">
+      <div class="hero-text-box">
+        <h2 class="heading-primary">
 
-              {% if SubscriptionID %}
-          <h1>Subscription status:</h1>
-              <h1>{{ SubPlan }}😒</h1>
+    <div class="main-main-main">
+    <div class="main-main"
+    style="
+              clip-path: polygon(
+                74.1% 44.1%,
+                100% 61.6%,
+                97.5% 26.9%,
+                85.5% 0.1%,
+                80.7% 2%,
+                72.5% 32.5%,
+                60.2% 62.4%,
+                52.4% 68.1%,
+                47.5% 58.3%,
+                45.2% 34.5%,
+                27.5% 76.7%,
+                0.1% 64.9%,
+                17.9% 100%,
+                27.6% 76.8%,
+                76.1% 97.7%,
+                74.1% 44.1%
+              );
+            "
+    >
+    </div>
+    </div>
+{#          <span class="text-static"> Hire</span>#}
+            WellCome
+          <span id="text-animation"> </span>
+        </h2>
+        <p class="hero-p">
+          "The habit of reading is the only enjoyment in which there is no alloy;
+            it lasts when all other pleasures fade."
+            <span>– Anthony Trollope</span>
+        </p>
 
+      </div>
+      <div class="hero-img-box">
+        <img src="{% static 'images/image.png' %}" alt="old-programmer with hold a pc" class="hero-img" />
+      </div>
+        </div>
+    <div class="sub-states">
+          {% if SubscriptionID and SubPlan == 'Standard' %}
+              <div>
+              <h4 class="hero-h4">Subscription status:</h4>
+              <h1 class="btn">{{ SubPlan }}⭐⭐</h1>
+              </div>
+              {% elif SubscriptionID and SubPlan == 'Premium' %}
+              <div>
+                    <h4 class="hero-h4">Subscription status:</h4>
+                  <h1>{{ SubPlan }}⭐⭐⭐⭐</h1>
+              </div>
              {% else %}
+              <div>
             <h1>{{ SubPlan }}😒</h1>
             <p>You can subscribe 👇 </p>
+              </div>
           <a class="links" href={% url 'subscription_plans' %}>Subscribe</a>
         {% endif %}
-         </section>
+  </div>
+    </section>
+        </main>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+
+
+  <script>
+      const typed = new Typed('#text-animation', {
+          strings: ["Client !!", 'Reader !!','{{ request.user.first_name }}!!'],
+          typeSpeed: 150,
+          backSpeed: 150,
+          loop: true
+      });
+  </script>
 
 {% endblock %}
 
