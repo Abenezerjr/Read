@@ -17,7 +17,7 @@ from .models import CustomUser
 # Create your views here.
 
 def home(request):
-    return render(request, 'account/index.html')
+    return render(request, 'index.html')
 
 
 def UserRegister(request):
@@ -109,3 +109,7 @@ def email_verification_success(request):
 
 def email_verification_failed(request):
     return render(request, 'account/email-verification-failed.html')
+
+
+def about(request):
+    return render(request, 'about -page.html')

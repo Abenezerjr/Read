@@ -1,0 +1,115 @@
+.custom-class {
+            position: relative; /* relative */
+            z-index: -10; /* -z-10 */
+            overflow: hidden; /* overflow-hidden */
+            background: linear-gradient(to bottom, rgba(224, 231, 255, 0.2), rgba(224, 231, 255, 1)); /* bg-gradient-to-b from-indigo-100/20 */
+            padding-top: 3.5rem; /* pt-14 */
+        }
+.custom-class-1 {
+            position: absolute; /* absolute */
+            top: 0; /* inset-y-0 (top and bottom set to 0) */
+            bottom: 0;
+            right: 50%; /* right-1/2 */
+            z-index: -10; /* -z-10 */
+            margin-right: -24rem; /* -mr-96 (negative margin-right of 96 * 0.25rem) */
+            width: 200%; /* w-[200%] */
+            transform-origin: top right; /* origin-top-right */
+            transform: skewX(-30deg); /* skew-x-[-30deg] */
+            background-color: white; /* bg-white */
+            box-shadow: 0px 10px 15px -3px rgba(99, 102, 241, 0.1), 0px 4px 6px -2px rgba(99, 102, 241, 0.05); /* shadow-xl shadow-indigo-600/10 */
+            border: 1px solid rgba(238, 242, 255, 1); /* ring-1 ring-indigo-50 */
+        }
+.container-about {
+            margin-left: auto; /* mx-auto (left and right margin set to auto) */
+            margin-right: auto;
+            max-width: 80rem; /* max-w-7xl (7xl is 80rem, assuming 1rem = 16px, 7xl is 1280px) */
+            padding-left: 1.5rem; /* px-6 (6 * 0.25rem = 1.5rem) */
+            padding-right: 1.5rem;
+            /*padding-top: 8rem;  py-32 (32 * 0.25rem = 8rem) */
+            padding-bottom: 8rem;
+        }
+.container-about-el {
+            margin-left: auto; /* mx-auto */
+            margin-right: auto;
+            max-width: 42rem; /* max-w-2xl (2xl is 42rem, assuming 1rem = 16px, 2xl is 672px) */
+        }
+
+.text-content {
+            max-width: 42rem; /* max-w-2xl (2xl is 42rem, assuming 1rem = 16px, 2xl is 672px) */
+            font-size: 2.25rem; /* text-4xl (4xl is 2.25rem) */
+            font-weight: bold; /* font-bold */
+            letter-spacing: -0.025em; /* tracking-tight */
+            color: #111827; /* text-gray-900 (hex value for gray-900 in Tailwind CSS) */
+        }
+.custom-para {
+            margin-top: 1.5rem; /* mt-6 (6 * 0.25rem = 1.5rem) */
+            max-width: 36rem; /* max-w-xl (xl is 36rem, assuming 1rem = 16px, xl is 576px) */
+        }
+.about-image{
+    margin-top: 2.5rem;
+    aspect-ratio: 6/5;
+    width: 100%;
+    max-width: 32rem;
+    border-radius: 3rem;
+    object-fit: cover;
+
+}
+.paragraph{
+    font-size: 1.125rem; /* 18px */
+    line-height: 2rem;
+    color: #4B5563;;
+}
+.about-about {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -10; /* Adjust as needed */
+    height: 6rem; /* h-24 equivalent */
+    background-image: linear-gradient(to top, #FFFFFF, transparent); /* bg-gradient-to-t from-white equivalent */
+}
+@media (max-width: 640px) {
+            .text-content {
+                font-size: 2.75rem; /* sm:text-6xl (6xl is 3.75rem) */
+                margin-top: -6rem;
+            }
+    .about-image{
+     margin-top: 4rem;
+    }
+    .custom-class-1{
+         margin-right: -20rem;
+
+    }
+    .container-about{
+           padding-top: 10rem; /* sm:py-40 (40 * 0.25rem = 10rem) */
+                padding-bottom: 10rem;
+    }
+        }
+
+@media (max-width: 940px) {
+    .about-image {
+        font-size: 3.75rem; /* sm:text-6xl (6xl is 3.75rem) */
+        margin-top: 2rem;
+    }
+}
+@media (min-width: 1024px) {
+            .container-about-el {
+                margin-left: 0; /* lg:mx-0 */
+                margin-right: 0;
+                display: grid; /* lg:grid */
+                max-width: none; /* lg:max-w-none */
+                grid-template-columns: repeat(2, 1fr); /* lg:grid-cols-2 */
+                gap: 1.5rem 4rem; /* lg:gap-y-6 (6 * 0.25rem = 1.5rem), lg:gap-x-16 (16 * 0.25rem = 4rem) */
+            }
+      .text-content {
+                grid-column: span 2; /* lg:col-span-2 */
+            }
+
+          .custom-class-1{
+         margin-right: -24rem;
+
+    }
+
+        }
+
+

@@ -7,6 +7,7 @@ urlpatterns = [
     path('register/', views.UserRegister, name='register'),
     path('login/', views.UserLogin, name='login'),
     path('logout/', views.UserLogout, name='logout'),
+    path('about/', views.about, name='about'),
 
     # password management
 
