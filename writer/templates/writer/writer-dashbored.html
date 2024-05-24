@@ -1,8 +1,74 @@
 {% extends 'main.html' %}
-
+{% load static %}
+{% block css %}
+<link href="{% static 'css/client-dashbored.css'  %}" rel="stylesheet">
+{% endblock %}
 {% block content %}
-<h1> wellcome  {{ request.user.first_name }}</h1>
+
+    <main>
+    <section class="hero-section">
+      <div class="hero">
+      <div class="hero-text-box">
+        <h2 class="heading-primary">
+
+    <div class="main-main-main">
+    <div class="main-main"
+    style="
+              clip-path: polygon(
+                74.1% 44.1%,
+                100% 61.6%,
+                97.5% 26.9%,
+                85.5% 0.1%,
+                80.7% 2%,
+                72.5% 32.5%,
+                60.2% 62.4%,
+                52.4% 68.1%,
+                47.5% 58.3%,
+                45.2% 34.5%,
+                27.5% 76.7%,
+                0.1% 64.9%,
+                17.9% 100%,
+                27.6% 76.8%,
+                76.1% 97.7%,
+                74.1% 44.1%
+              );
+            "
+    >
+    </div>
+    </div>
+            WellCome
+          <span id="text-animation"> </span>
+        </h2>
+        <p class="hero-p">
+         The only way you can write the truth is to assume that what you set down will never be read.
+            Not by any other person, and not even by yourself at some later date.”
+            <span>– Margaret Atwood</span>
+        </p>
+
+      </div>
+      <div class="hero-img-box">
+        <img src="{% static 'images/wr2.png' %}" alt="old-programmer with hold a pc" class="hero-img" />
+      </div>
+        </div>
+    <div class="sub-states">
+          <a class="links" href='#'>Subscribe</a>
+  </div>
+    </section>
+        </main>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+
+
+  <script>
+      const typed = new Typed('#text-animation', {
+          strings: ['writer !!','{{ request.user.first_name }}!!'],
+          typeSpeed: 150,
+          backSpeed: 150,
+          loop: true
+      });
+  </script>
 
 {% endblock %}
+
 
 
