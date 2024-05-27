@@ -1,32 +1,51 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block css %}
-<link href="{% static 'css/form.css'  %}" rel="stylesheet">
+<link href="{% static 'css/read.css'  %}" rel="stylesheet">
 {% endblock %}
 {% block content %}
 
-<h1>My article list </h1>
+
     {% for article in articles %}
-        <section class="section_form title">
-        <h2 style="font-size: 20px">
-     {{ article.title }}
-            </h2>
-
-            <p style="font-size: 14px">
-        {{ article.content }}
-                </p>
-        <br>
-        {{ article.date_post }}
-        <br>
-            {% if article.is_premium  == True %}
-            <hr>
-            <strong>⭐ Premium</strong>
-          {% elif article.is_premium  == False %}
-            <strong>Standard</strong>
-            {% endif %}
-
-        <br>
-         </section>
+{#        <section class="section_form title">#}
+{#        <h2 style="font-size: 20px">#}
+{#     {{ article.title }}#}
+{#            </h2>#}
+{##}
+{#            <p style="font-size: 14px">#}
+{#        {{ article.content }}#}
+{#                </p>#}
+{#        <br>#}
+{#        {{ article.date_post }}#}
+{#        <br>#}
+{#            {% if article.is_premium  == True %}#}
+{#            <hr>#}
+{#            <strong>⭐ Premium</strong>#}
+{#          {% elif article.is_premium  == False %}#}
+{#            <strong>Standard</strong>#}
+{#            {% endif %}#}
+{##}
+{#        <br>#}
+{#         </section>#}
+        <article class="article">
+	<h1 class="header-article">
+		<span class="focusing">Focusing On</span>
+		<span class="the">The</span>
+		<span class="heart">Heart</span>
+	</h1>
+	<cite class="cite">
+		by <span class="name">Jay Wamsley</span> |
+		Photos by <span class="name">Jay Drowns</span>
+	</cite>
+	<img class="read-image" src="https://images.unsplash.com/photo-1471119017026-179f1bb0a70e?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ" alt="not actually Fabio" />
+	<aside>Fabio Sagebin is currently in the final year of a residency at the University of Rochester Medical Center.</aside>
+	<main class="read-main">
+		<p><span class="dropcap">A dozen</span> years ago, soon-to-be UVU student Fabio Sagebin was doing research - on whether or not higher education was for him and, if so, where he should enroll. A dozen years from now, Dr. Sagebin will again likely be doing research - this time on better ways to repear hearts.</p>
+		<p>Currently a member of the University of Rochester Medical Center's cardiothoracic surgery integrated residency program, Sagebin says a decade ago, he was "fully intending to finish high school, go on a mission, and come home and work construction with my dad." His family - who had emigrated when he was 3 years old to Utah from a small city in southern Brazil, near the Uruguayan border - had begun a successful business, building steel-frame homes. His mission for The Church of Jesus Christ of Latter-Day Saints had taken him to New York City, specifically Brooklyn and Queens.</p>
+		<p>A visit with his mission president "changed the trajectory for me," Sagebin remembers. "I worked closely with my mission president, and during that mentorship he planted the seed that I really needed a formal education.</p>
+		<p>"Unfortunately, I had not really prepared for that at that point. My parents were wonderful people, hardworking people, but we didn't have the social infrostructure necessary for college prep. It was not something that was inculcated in my family culture. I didn't take the SAT of the ACT, and I really hadn't prepared for college. So, when I came home, I just looked for an open-enrollment college."</p>
+	</main>
+</article>
 
     {% endfor %}
 

@@ -139,11 +139,41 @@
   margin-bottom: 2rem;
 
 }
+.section_password_reset{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8rem;
+}
+.container_form_password input  {
+  background-color: #eee;
+  border: none;
+  margin: 8px 0;
+  padding: 10px 15px;
+  font-size: 13px;
+  border-radius: 8px;
+  width: 100%;
+  outline: none;
 
+}
+.update_state{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 20vh;
 
+}
 
 @media screen and (max-width: 800px) {
   .container_form input {
     width: 100%;
+  }
+  .section_update{
+    display: block;
+  }
+  .update-sub{
+
+    flex-direction: column;
   }
 }
