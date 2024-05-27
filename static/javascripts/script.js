@@ -1,5 +1,3 @@
-
-
 const myName = "Abenezer Alemayhu";
 const h1 = document.querySelector(".heading-primary");
 console.log(myName);

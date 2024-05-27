@@ -8,25 +8,29 @@
 
 {% block content %}
 
-        <section class="section_form">
+        <section class="section_update">
 
-            <section class="section_form title">
+            <section class="section_form title" style="margin-bottom: 2rem">
                  {% if SubscriptionID %}
+                     {% if SubPlan == 'Standard' %}
             <h1>Subscription status:</h1>
-              <h1>{{ SubPlan }}⭐</h1>
+              <h1 style="margin-bottom: 2rem">{{ SubPlan }}⭐⭐</h1>
+                         {% elif SubPlan == 'Premium' %}
+                          <h1 style="margin-bottom: 2rem">{{ SubPlan }}⭐⭐⭐</h1>
+                         {% endif %}
             {% else %}
              <h1>Subscription status:</h1>
-              <h1>{{ SubPlan }}😒</h1>
+              <h1 style="margin-bottom: -4rem">{{ SubPlan }}😒</h1>
               <p>You can subscribe 👇 </p>
           <a class="links" href={% url 'subscription_plans' %}>Subscribe</a>
 
     {% endif %}
          </section>
-
+ <section class="section_form">
    <div class="container_form" id="container">
                 <form method="POST" autocomplete="off" >
                     {% csrf_token %}
-                <h1>Update account</h1>
+                <h1 style="margin-bottom: 2rem">Update account</h1>
 
                     {% for field in form %}
               {% if field.name == 'is_writer' %}
@@ -34,11 +38,14 @@
                         {% else %}
                          {{field}}
               {% endif %}
-{% endfor %}
+                  {% endfor %}
                     <button class="button-main" type="submit">Update</button>
                 </form>
 
-   </div>
+           </div>
+      </section>
+    <h1 style="margin-bottom: 2rem;margin-top: -5rem"> Edit Your Subscription</h1>
+<div class="update-sub">
 
 
         {% if SubscriptionID %}
@@ -56,8 +63,8 @@
 
             {% else %}
     {% endif %}
-
-    </section>
+</div>
+</section>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js">
 
 </script>

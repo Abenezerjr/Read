@@ -11,13 +11,9 @@
    <div class="container_form" id="container">
                 <form method="POST" autocomplete="off" >
                     {% csrf_token %}
-                <h1>Register</h1>
-                <div class="social-icons">
-                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                <h1 style="margin-bottom: 2.5rem">Register</h1>
 
-                </div>
-                <span>or use your email password</span>
+                <span> use your Email </span>
 
                     {% for field in RegisterForm %}
               {% if field.name == 'is_writer' %}

@@ -3,7 +3,7 @@ from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.core.mail import send_mail
-from .forms import CreatUserForm
+from .forms import CreatUserForm ,StyledAuthenticationForm
 from django.conf import settings
 
 from django.contrib.auth.forms import AuthenticationForm
@@ -58,10 +58,10 @@ def UserRegister(request):
 
 
 def UserLogin(request):
-    form = AuthenticationForm()
+    form = StyledAuthenticationForm()
 
     if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
+        form = StyledAuthenticationForm(request, data=request.POST)
 
         if form.is_valid():
             username = request.POST.get('username')
