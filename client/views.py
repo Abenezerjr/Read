@@ -98,6 +98,7 @@ def client_account_management(request):
         return render(request, 'client/account-management.html', context)
 
 
+@login_required(login_url='login')
 def delete_account(request):
     if request.method == "POST":
         delete_user = CustomUser.objects.get(email=request.user)
