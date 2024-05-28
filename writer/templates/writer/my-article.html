@@ -1,37 +1,74 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block css %}
-<link href="{% static 'css/form.css'  %}" rel="stylesheet">
+<link href="{% static 'css/read.css'  %}" rel="stylesheet">
+    <link href="{% static 'css/form.css'  %}" rel="stylesheet">
 {% endblock %}
+{#{% block content %}#}
+{##}
+{#<h1>My article list </h1>#}
+{#    {% for article in articles %}#}
+{#        <section class="section_form title">#}
+{#        <h2 style="font-size: 20px">#}
+{#     {{ article.title }}#}
+{#            </h2>#}
+{##}
+{#            <p style="font-size: 14px">#}
+{#        {{ article.content }}#}
+{#                </p>#}
+{#        <br>#}
+{#        {{ article.date_post }}#}
+{#        <br>#}
+{#            {% if article.is_premium  == True %}#}
+{#            <hr>#}
+{#            <strong>⭐ Premium</strong>#}
+{#          {% elif article.is_premium  == False %}#}
+{#            <strong>Standard</strong>#}
+{#            {% endif %}#}
+{##}
+{#        <br>#}
+{##}
+{#        <br>#}
+{#         </section>#}
+{#        <a class="links" href={% url 'update-article' article.id %}>Update</a>#}
+{#        <a class="links" href={% url 'delete_article' article.id %}>Delete</a>#}
+{##}
+{#    {% endfor %}#}
+{##}
+{#{% endblock %}#}
 {% block content %}
-
-<h1>My article list </h1>
-    {% for article in articles %}
-        <section class="section_form title">
-        <h2 style="font-size: 20px">
-     {{ article.title }}
-            </h2>
-
-            <p style="font-size: 14px">
-        {{ article.content }}
-                </p>
-        <br>
-        {{ article.date_post }}
-        <br>
-            {% if article.is_premium  == True %}
+{% for article in articles %}
+        <section class="main-article">
+        <article class="article">
+	<h1 class="header-article">
+		<span class="focusing">{{ article.title }}</span>
+{#		<span class="heart">Focus</span>#}
+	</h1>
+	<cite class="cite">
+		by <span class="name">{{ article.user.first_name }}</span> |
+		Posted date <span class="name">{{ article.date_post }}</span>
+	</cite>
+	<img class="read-image" src="{% static 'images/sample.png' %}" alt="not actually Fabio" />
+	<aside>
+        {% if article.is_premium  == True %}
             <hr>
-            <strong>⭐ Premium</strong>
+            <span class="the">⭐⭐⭐ Premium</span>
           {% elif article.is_premium  == False %}
-            <strong>Standard</strong>
+            <span class="the">⭐⭐ Standard</span>
             {% endif %}
-
-        <br>
-
-        <br>
-         </section>
-        <a class="links" href={% url 'update-article' article.id %}>Update</a>
+    </aside>
+	<main class="read-main">
+		<p><span class="dropcap">A dozen</span>
+        {{ article.content  }}
+        </p>
+	</main>
+</article>
+    <section style="margin-top: 2rem;margin-bottom: 4rem">
+            <a class="links" href={% url 'update-article' article.id %}>Update</a>
         <a class="links" href={% url 'delete_article' article.id %}>Delete</a>
-
+    </section>
+    <hr>
+    <br>
     {% endfor %}
-
+</section>
 {% endblock %}

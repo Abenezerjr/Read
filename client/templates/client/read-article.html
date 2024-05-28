@@ -16,7 +16,7 @@
 		by <span class="name">{{ article.user.first_name }}</span> |
 		Posted date <span class="name">{{ article.date_post }}</span>
 	</cite>
-	<img class="read-image" src="https://images.unsplash.com/photo-1471119017026-179f1bb0a70e?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ" alt="not actually Fabio" />
+	<img class="read-image" src="{% static 'images/sample.png' %}" alt="not actually Fabio" />
 	<aside>
         {% if article.is_premium  == True %}
             <hr>

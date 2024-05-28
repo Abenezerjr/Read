@@ -12,10 +12,11 @@
 
 <form method="POST" action="#">
   {% csrf_token %}
-    <h2>Create article here</h2>
+    <h2 style="margin-bottom: 2rem">Create article here</h2>
+
     {{ form }}
 
-  <button type="submit">create</button>
+  <button class="button-main" type="submit">create</button>
 </form>
             </div>
      </section>

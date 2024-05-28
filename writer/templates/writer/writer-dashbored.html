@@ -2,6 +2,7 @@
 {% load static %}
 {% block css %}
 <link href="{% static 'css/client-dashbored.css'  %}" rel="stylesheet">
+    <link href="{% static 'css/form.css'  %}" rel="stylesheet">
 {% endblock %}
 {% block content %}
 
@@ -50,9 +51,12 @@
         <img src="{% static 'images/wr2.png' %}" alt="old-programmer with hold a pc" class="hero-img" />
       </div>
         </div>
-    <div class="sub-states">
-          <a class="links" href='#'>Subscribe</a>
+                    <div style="display: flex;gap: 3rem;justify-content: start;align-items:center;margin-left: 3rem">
+                        <h1 >write your thought!!</h1>
+                        <a class="button-main"  href='{% url 'create-article' %}'>Start</a>
+
   </div>
+
     </section>
         </main>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>

@@ -11,7 +11,7 @@
    <div class="container_form" id="container">
                 <form method="POST" autocomplete="off" >
                     {% csrf_token %}
-                <h1>Update account</h1>
+                <h1 style="margin-bottom: 2rem;margin-top: 5rem">Update account</h1>
 
                     {% for field in form %}
               {% if field.name == 'is_writer' %}
@@ -23,7 +23,7 @@
 
 {% endfor %}
 {#                <a href="#">Forget Your Password?</a>#}
-                <button type="submit">Update</button>
+                <button class="button-main" type="submit">Update</button>
             </form>
         </div>
 
